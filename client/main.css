@@ -2339,7 +2339,7 @@
   font-size:14px;
   color:#fff;
   text-align:left;
-  background-color:rgba(145,13,13,.8)
+  background-color:RGBA(42, 49, 50, .8)
  }
  @media screen and (max-width:1000px) {
   .site-sidebar {
@@ -3199,7 +3199,7 @@
   }
  }
  .cv-page {
-  margin-left: 30%;
+  margin-left: 4rem;
   width:920px;
   padding:80px 80px 60px;
   /* margin:80px auto; */
