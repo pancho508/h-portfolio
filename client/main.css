@@ -2152,7 +2152,7 @@
   text-transform:uppercase
  }
  a {
-  color:#BB1E1E;
+  color:#763626;
   text-decoration:none
  }
  a:hover {
@@ -2187,7 +2187,7 @@
   width:350px
  }
  .red {
-  color:#BB1E1E
+  color:#763626
  }
  .gray {
   color:#999
@@ -2296,8 +2296,8 @@
   margin-right:.2em
  }
  .button.button-red {
-  background-color:#AF2222;
-  border:1px solid #9a1e1e;
+  background-color:#336B87;
+  border:1px solid #90AFC5;
   color:#fff;
   padding:.7em 1.2em;
   font-weight:400;
@@ -2950,7 +2950,7 @@
   text-decoration:none
  }
  .portfolio-timeline .project-link:hover {
-  color:#BB1E1E
+  color:#763626
  }
  .portfolio-timeline .project-text {
   width:50%;
@@ -3052,14 +3052,14 @@
  }
  .tech-tags a {
   display:inline-block;
-  background-color:rgba(175,34,34,.8);
+  background-color:rgba(144, 175, 197, .8);
   color:#FFF;
   padding:4px 10px;
   font-size:13px;
   text-transform:uppercase
  }
  .tech-tags a:hover {
-  background-color:rgba(175,34,34,.8)
+  background-color:rgba(51, 107, 135, .8);
  }
  .project-section {
   max-width:1400px
@@ -3123,7 +3123,7 @@
   }
  }
  .feature {
-  color:#BB1E1E;
+  color:#763626;
   font-weight:300;
   text-align:center;
   padding:0 10px
@@ -3151,7 +3151,7 @@
   font-size:36px;
   line-height:1;
   margin-bottom:10px;
-  color:#BB1E1E;
+  color:#763626;
   text-transform:none
  }
  .post .post-meta {
@@ -3175,7 +3175,7 @@
   font-style:italic
  }
  .post .comment-link {
-  color:#BB1E1E
+  color:#763626
  }
  .timeline.talks-timeline .talk-title {
   margin-top:-.25em
@@ -3262,7 +3262,7 @@
   font-size:30px;
   line-height:1;
   margin-bottom:5px;
-  color:#BB1E1E
+  color:#763626
  }
  .cv-header-subname {
   display:block;
@@ -3328,7 +3328,7 @@
   }
  }
  .cv-section-title {
-  color:#BB1E1E;
+  color:#763626;
   font-size:24px;
   font-weight:300;
   padding-left:21.5%;
