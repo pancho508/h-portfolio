@@ -3199,9 +3199,10 @@
   }
  }
  .cv-page {
+  margin-left: 30%;
   width:920px;
   padding:80px 80px 60px;
-  margin:80px auto;
+  /* margin:80px auto; */
   background-color:#fff;
   box-shadow:2px 2px 1px #606060
  }
