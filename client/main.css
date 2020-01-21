@@ -2747,7 +2747,7 @@
    top:0
   }
  }
- @media screen and (max-width:567px) {
+ /* @media screen and (max-width:567px) {
   .timeline.talks-timeline .timeline_element {
    border-top:1px solid #ddd
   }
@@ -2777,7 +2777,7 @@
    padding-top:.5em!important;
    padding-bottom:1em
   }
- }
+ } */
  @-webkit-keyframes fadein {
   0%,
   50% {
@@ -2931,7 +2931,7 @@
   }
  }
  .portfolio-section {
-  max-width:1400px
+  max-width:100%
  }
  .portfolio-timeline .project-link {
   color:inherit;
