@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Preguntas de Entrevistas para "Full-Stack"</title>
+    <style>
+    /* Base Styles */
+    body{
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1.4em;
+        color: #222;
+        background: #474747;
+        font-family: 'Lato', sans-serif;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+        border-radius: 3px;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    /* Grid */
+    .section {
+        clear: both;
+        padding: 0;
+        margin: 0;
+    }
+    .col {
+        display: block;
+        float:left;
+        margin: 1% 0 1% 1.6%;
+    }
+    .col:first-child { margin-left: 0; }
+    .span_3_of_3 {
+        width: 100%;
+    }
+    .span_2_of_3 {
+        width: 66.1%;
+    }
+    .span_1_of_3 {
+        width: 32.2%;
+    }
+    /* Header & Navigation */
+    header{
+        max-width: 100%;
+        background: #222; /*FallBack*/
+        background: rgba(0,0,0,.6);
+        padding: 20px;
+    }
+    .logo{
+        text-align: center;
+        color: #fff;
+        font-size: 3em;
+        font-weight: 400;
+        font-family: 'Poiret One', cursive;
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        -webkit-transition: max-height 0.5s;
+        transition: max-height 0.5s;
+    }
+    /* Blog Posts */
+    .container{
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .blog-post{
+        background: #fff;
+        margin: 0 auto 2em auto;
+        padding: 35px 30px;
+        box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.3);
+    }
+    .side-post{
+        background: #fff;
+        margin: 0 auto 1.5em auto;
+        width: 15em;
+        padding: 20px;
+    }
+    .blog-content{
+        font-size: 1em;
+        border-left: 5px solid #8EE5EE;
+        padding-left: 15px;
+    }
+    .side-content{
+        font-size: .9em;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+    .blog-title{
+        font-size: 2.5em;
+        margin-top: 5px;
+    }
+    .date{
+        font-size: 1em;
+        font-weight: 400;
+        color: #9C9C9C;
+        margin-top: -10px;
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+    }
+    .post-link{
+        color: #009ACD;
+        font-style: italic;
+        transition: all 0.4s;
+    }
+    .post-link:hover{
+        color: #005c7b;
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        cursor: pointer;
+    }
+    /* Button */
+    .button{
+        display: block;
+        padding: 15px 20px;
+        margin-top: .8em;
+        background: #009ACD;
+        text-align: center;
+        color: #fff;
+        font-size: 1.4em;
+        border-radius: 3px;
+        transition: all .4s ease-in;
+    }
+    .button:hover{
+        background: #005c7b;
+    }
+    /*Media Queries*/
+    /* @900px*/
+    @media only screen and (max-width: 56.25em) {
+        .col{ margin: 1% 0 1% 0%;}
+        .span_3_of_3, .span_2_of_3, .span_1_of_3{ width: 100%; }
+        .side-post{ width: 42%;
+                float: left;
+                margin: -2% 0 1% 1.6%;}
+    }
+    /* @685px*/
+    @media only screen and (max-width: 42.813em) {
+        .side-post{ width: auto;
+                    padding: 15px;
+                    margin: -2% auto 8% auto; }
+        .blog-title{ font-size: 1.95em; }
+        .date{ font-size: .9em; }		
+    }
+    /* @480px */
+    @media only screen and (max-width: 30em){
+        .reveal{ max-height:100%; }
+    }
+    /* @380px*/
+    @media only screen and (max-width: 23.75em) {
+        .blog-content, .post-link{ font-size: .9em; }
+        .side-content{ font-size: .8em; }
+        .button{ padding: 10px 15px; }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Resolviendo nQueens pasa a paso</h1>
+      </header>
+      
+      <div class="container">
+        <div class="section">
+            <aside class="col span_1_of_3">
+            <div class="side-post">
+              <img src="http://sooyoung32.github.io/assets/img/queens4_backtrack.png" alt="img" />
+              <p class="side-content">
+                nQueens es uno de los problemas clasicos y advanzados en ciencias computacionales
+              </p>
+            </div>
+      <!--       <div class="side-post">
+              <p class="side-content">
+                Ultricies lacus et, non orci gravida purus augue integer, sed turpis.
+                Erat dapibus. Eleifend massa scelerisque, aenean penatibus laoreet ut
+                in.
+              </p>
+              <a href="#" class="button">Subscribe!</a>
+            </div> -->
+          </aside>
+          
+             <div class="col span_2_of_3">
+                <div class="blog-post">
+                    <h1>nQueens</h1>
+                    <p>El prop&oacute;sito de usar recursi&oacute;n para este tipo de problemas es que te permiten pensar en t&eacute;rminos de &quot;ahora he colocado&nbsp;<em>k</em>&nbsp;reinas; &iquest;c&oacute;mo puedo colocar las restantes si el n&uacute;mero total de reinas es&nbsp;<em>n</em>&nbsp;?&quot; Entonces, la funci&oacute;n recursiva deber&iacute;a tomar&nbsp;<em>dos</em>&nbsp;par&aacute;metros: el n&uacute;mero objetivo de reinas y el n&uacute;mero de reinas colocadas hasta el momento. Al escribir la funci&oacute;n, su objetivo es, ante todo, probar diferentes formas de colocar la&nbsp;<em>k-</em>&nbsp;&eacute;sima reina. Pero cuando ha seleccionado una posible ubicaci&oacute;n y la ha encontrado v&aacute;lida, debe colocar las reinas&nbsp;<em>n - k - 1</em>&nbsp;restantes. &iquest;C&oacute;mo podemos hacer esto? La respuesta: recursi&oacute;n! Llame a la funci&oacute;n (desde dentro) con el par&aacute;metro&nbsp;<em>k - 1</em>&nbsp;para indicar que desea colocar las reinas&nbsp;<em>K - 1</em>&nbsp;restantes. Siempre que agote todas las posibilidades (o descubra que ninguna es posible), simplemente regrese de la funci&oacute;n; luego volver&aacute; a la llamada a la funci&oacute;n anterior (por ejemplo, la que intenta colocar la&nbsp;<em>k-</em>&nbsp;&eacute;sima reina).</p>
+
+                    <p>Edici&oacute;n: tambi&eacute;n necesitar&aacute; crear una matriz bidimensional para representar el estado actual de su placa; esta matriz debe enviarse como un par&aacute;metro adicional a la funci&oacute;n recursiva o mantenerse como un campo de la clase que contiene el m&eacute;todo.</p>
+
+                    <p>En cuanto al retroceso, esto se logra simplemente asegur&aacute;ndose de que la funci&oacute;n a la que se llama con&nbsp;<em>k + 1</em>&nbsp;elimine la&nbsp;<em>k +</em>&nbsp;1ra reina del tablero antes de regresar; esto esencialmente dice &quot;Ahora hemos (sin &eacute;xito) probado todas las formas de colocar el resto de las reinas, en&nbsp;<em>funci&oacute;n de las posiciones de las k queens que ya se han colocado</em>&nbsp;. Ninguna de ellas tuvo &eacute;xito, as&iacute; que ajuste las posiciones de la primera&nbsp;<em>k</em>&nbsp;reinas (que se realizar&aacute;n con la funci&oacute;n que se llam&oacute; con&nbsp;<em>k</em>&nbsp;, y la funci&oacute;n que llam&oacute; a esa funci&oacute;n, y as&iacute; sucesivamente) e intente nuevamente &quot;.</p>
+
+                    <!--         <a href="#" class="post-link">Read More...</a> -->
+                </div>
+ 
+                <div class="blog-post">
+                    <h1>Tree Traversal</h1>
+        <!--         <a href="#" class="post-link">Read More...</a> -->
+                </div> 
+
+                <div class="blog-post">
+                    <h1>Recusion y Permutations</h1>
+        <!--         <a href="#" class="post-link">Read More...</a> -->
+                </div> 
+
+                <div class="blog-post">
+                    <h1>nRooks</h1>
+        <!--         <a href="#" class="post-link">Read More...</a> -->
+                </div> 
+
+                <div class="blog-post">
+                    <h1>nQueens</h1>
+        <!--         <a href="#" class="post-link">Read More...</a> -->
+                </div> 
+
+                <!-- end -->
+            </div>
+        </div>
+      </div>       
+</body>
+</html>
