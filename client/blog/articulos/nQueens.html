@@ -190,40 +190,88 @@
           
              <div class="col span_2_of_3">
                 <div class="blog-post">
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#e01b84;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Enero 04, 2020</span></p>
-                    <h1 dir="ltr" style="line-height:1.2;margin-left: -0.75pt;margin-top:24pt;margin-bottom:0pt;"><span style="font-size:21pt;font-family:Roboto,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Este Articulo no esta terminado.</span></h1>
-                    <h1 dir="ltr" style="line-height:1.2;margin-left: -0.75pt;margin-top:24pt;margin-bottom:0pt;"><span style="font-size:21pt;font-family:Roboto,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Que es?</span></h1>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">N Queens es un problema clásico en ciencias computacionales que consiste en encontrar todas las posibles conjugaciones de ocho reinas en un tablero de ajedrez sin que se amenacen. Es necesario usar &nbsp;backtracking para poder resolver este tipo de problema ya que tratar de encontrar cada solución de manera bruteforce será demasiado pesado para las computadoras de hoy en dia.&nbsp;</span>
-                        <hr/>
-                        <img title="Placeholder image" src="https://lh6.googleusercontent.com/xbtST3ZmQklcmnpp6BxrEfwwkl7lAx-ZyL4nFGFqUZYXi-zLuxq_Fv_lSxLN8nhE5uTsX0_WVviZsRYo5wMLX6ZbzqZsy54jDGBiw-d_aeu9ebDbMn28E8JlzTBuhdHgMoLsQQHI" width="287.05466893039056" height="293">
-                    </p>
-                    <h2 dir="ltr" style="line-height:1.2;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:16pt;font-family:Roboto,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Como lo resuelvo?</span></h2>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Hay muchas formas de resolver este tipo problema pero en este artículo vamos a ir mucho más a detalle &nbsp;que solo ver código y hablar sobre cómo fue implementado.</span></p>
-                    <h3 dir="ltr" style="line-height:1.2;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:12pt;font-family:Roboto,sans-serif;color:#e01b84;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Combinatorics? huh?</span></h3>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">El problema de N Queens es una instancia de&nbsp;</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:700;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">backtracking</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">, cual en sí es una instancia de&nbsp;</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:700;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">permutations,&nbsp;</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">cual en sí es una instancia de&nbsp;</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:700;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">combinatorics</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">. “</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pero Pancho que es combinatorics? Y para qué quiero saber mas de esto si yo solo quiero &nbsp;hacer web apps?”&nbsp;</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">dicen mis estudiantes.</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:italic;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Hay muchos ingenieros que tienen &nbsp;una solución de n queens memorizada para entrevistas de trabajo pero al llegar el dia cual cierto algoritmo sea útil; no lo pueden implementar.&nbsp;</span></p>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Entonces a lugar de estudiar de una forma aislada donde solo estudios lo mínimo para tal problema. Sugiero estudiar un poco más a detalle ya que a la larga será mucho más útil.&nbsp;</span></p>
-                    <h2 dir="ltr" style="line-height:1.2;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;">
-                    <a href="https://fchollet.com/" style="text-decoration:none;"><span style="font-size:16pt;font-family:Roboto,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">François Chollet</span></a><span style="font-size:16pt;font-family:Roboto,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;dijo una verdad:</span></h2>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">El enfoque miope para dominar un tema es dedicar todo su tiempo y energía a estudiar en profundidad lo que se ha escrito sobre él hasta ahora.</span></p>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">El enfoque a largo plazo es estudiar una variedad de campos interconectados y formar sus propios modelos mentales a través de analogías relevantes.</span></p>
-                    <h1 dir="ltr" style="line-height:1.2;margin-left: -0.75pt;margin-top:24pt;margin-bottom:0pt;"><span style="font-size:21pt;font-family:Roboto,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">El Plan</span></h1>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">La siguiente lista es un conjunto de &nbsp;materiales para tener un entendimiento concreto para poder continuar con este artículo te recomiendo que completes estos dos cursos gratuitos.&nbsp;</span></p>
-                    <ol style="margin-top:0;margin-bottom:0;">
-                    <li dir="ltr" style="list-style-type:decimal;font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;">
-                        <p dir="ltr" style="line-height:1.68;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Una buena introducción a combinatorics&nbsp;</span>
-                        <a href="https://www.khanacademy.org/partner-content/pixar/crowds/crowds-1/a/start-here-crowds?loggedInViaDiscussion=true" style="text-decoration:none;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">aquí</span></a>
-                        </p>
-                    </li>
-                    <li dir="ltr" style="list-style-type:decimal;font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;">
-                        <p dir="ltr" style="line-height:1.68;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Practicar Permutations&nbsp;</span>
-                        <a href="https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations/permutation-lib" style="text-decoration:none;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">aquí</span></a>
-                        </p>
-                    </li>
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">N Queens</strong></p>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Enero 04, 2020</strong></p>
+
+                    <h1 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Este Articulo no esta
+                            terminado.</strong></h1>
+
+                    <h1 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Que es?</strong></h1>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">N Queens es un problema cl&aacute;sico
+                            en ciencias computacionales que consiste en encontrar todas las posibles conjugaciones de ocho reinas en un
+                            tablero de ajedrez sin que se amenacen. Es necesario usar&nbsp; backtracking para poder resolver este tipo de
+                            problema ya que tratar de encontrar cada soluci&oacute;n de manera bruteforce es muy ineficaz.&nbsp;&nbsp;
+                            <br/>
+                            <img
+                                alt="" height="293"
+                                src="https://lh6.googleusercontent.com/xbtST3ZmQklcmnpp6BxrEfwwkl7lAx-ZyL4nFGFqUZYXi-zLuxq_Fv_lSxLN8nhE5uTsX0_WVviZsRYo5wMLX6ZbzqZsy54jDGBiw-d_aeu9ebDbMn28E8JlzTBuhdHgMoLsQQHI"
+                                title="Placeholder image" width="287.05466893039056" /></strong></p>
+
+                    <h2 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Como lo resuelvo?</strong></h2>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Para comenzar para un tablero
+                            8x8&nbsp; hay un total de 4,426,165,368 combinaciones de reinas en tal tablero. Lo cual significa que calcular
+                            todas estas posibilidades y respectivamente revisar si cada una es una soluci&oacute;n v&aacute;lida
+                            tomar&aacute; demasiados recursos de una computadora especialmente con lenguajes como JS. En este
+                            art&iacute;culo vamos a ir mucho m&aacute;s a detalle&nbsp; que solo ver c&oacute;digo y hablar sobre
+                            c&oacute;mo fue implementado.</strong></p>
+
+                    <h3 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Combinatorics? huh?</strong></h3>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">El problema de N Queens es una
+                            instancia de backtracking, cual en s&iacute; es una instancia de permutations, cual en s&iacute; es una
+                            instancia de combinatorics. &ldquo;Pero Pancho que es combinatorics? Y para qu&eacute; quiero saber mas de esto
+                            si yo solo quiero&nbsp; hacer web apps?&rdquo; me dicen. Hay muchos ingenieros que tienen&nbsp; una
+                            soluci&oacute;n de n queens memorizada para entrevistas de trabajo pero al llegar el dia cual cierto algoritmo
+                            sea &uacute;til; no lo pueden implementar.&nbsp;</strong></p>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Entonces a lugar de estudiar de una
+                            forma aislada donde solo estudias lo m&iacute;nimo para tal problema. Sugiero estudiar un poco m&aacute;s a
+                            detalle ya que a la larga ser&aacute; mucho m&aacute;s &uacute;til.&nbsp;</strong></p>
+
+                    <h2 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb"><a
+                                href="https://fchollet.com/">Fran&ccedil;ois Chollet</a> dijo una verdad:</strong></h2>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">El enfoque miope para dominar un tema
+                            es dedicar todo su tiempo y energ&iacute;a a estudiar en profundidad lo que se ha escrito sobre &eacute;l hasta
+                            ahora.</strong></p>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">El enfoque a largo plazo es estudiar
+                            una variedad de campos interconectados y formar sus propios modelos mentales a trav&eacute;s de analog&iacute;as
+                            relevantes.</strong></p>
+
+                    <h1 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">El Plan</strong></h1>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Adjunto dos materiales para tener un
+                            entendimiento concreto de combinatorics y permutaciones,&nbsp; para poder continuar con este art&iacute;culo te
+                            recomiendo que completes estos dos cursos gratuitos.&nbsp;</strong></p>
+
+                    <ol>
+                        <li dir="ltr">
+                            <p dir="ltr" role="presentation"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Una buena
+                                    introducci&oacute;n a combinatorics <a
+                                        href="https://www.khanacademy.org/partner-content/pixar/crowds/crowds-1/a/start-here-crowds?loggedInViaDiscussion=true">aqu&iacute;</a></strong>
+                            </p>
+                        </li>
+                        <li dir="ltr">
+                            <p dir="ltr" role="presentation"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Practicar
+                                    Permutations <a
+                                        href="https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations/permutation-lib">aqu&iacute;</a></strong>
+                            </p>
+                        </li>
                     </ol>
-                    <p dir="ltr" style="line-height:1.68;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ya terminaste? Vamonos con todo!</span></p>
-                    <h1 dir="ltr" style="line-height:1.2;margin-top:24pt;margin-bottom:0pt;"><span style="font-size:21pt;font-family:Roboto,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Backtracking FUN!</span></h1>
-                    <p dir="ltr" style="line-height:1.68;margin-left: -0.75pt;margin-top:10pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Roboto,sans-serif;color:#666666;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Aquí haremos 2 problemas con backtracking.</span></p>
-                    <p>Antes de comenzar con back tracking hay que ver un siple ejemplo de tree traversal para encontrar todas las posibles soluciones</p>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Ya terminaste? Vamonos con
+                            todo!</strong></p>
+
+                    <h1 dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Backtracking!</strong></h1>
+
+                    <p dir="ltr"><strong id="docs-internal-guid-04b57d7c-7fff-8937-e4d2-8e6cc9c9d9fb">Aqu&iacute; haremos un problema con
+                            backtracking.</strong></p>
+                                        
+                    <!-- cutoff -->
                     <iframe height="800" style="width: 100%;" scrolling="no" title="brasaletas permutaciones" src="https://codepen.io/xol3/embed/JjoQWEp?height=265&amp;theme-id=default&amp;default-tab=js" frameborder="no" allowtransparency="true" allowfullscreen="true">
                         See the Pen <a href='https://codepen.io/xol3/pen/JjoQWEp'>brasaletas permutaciones</a> by Francisco Rojas
                         (<a href='https://codepen.io/xol3'>@xol3</a>) on <a href='https://codepen.io'>CodePen</a>.
