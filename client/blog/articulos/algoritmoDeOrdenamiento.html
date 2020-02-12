@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Preguntas de Entrevistas para "Full-Stack"</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.4em;
+            color: #222;
+            background: #474747;
+            font-family: 'Lato', sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 3px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Grid */
+        .section {
+            clear: both;
+            padding: 0;
+            margin: 0;
+        }
+
+        .col {
+            display: block;
+            float: left;
+            margin: 1% 0 1% 1.6%;
+        }
+
+        .col:first-child {
+            margin-left: 0;
+        }
+
+        .span_3_of_3 {
+            width: 100%;
+        }
+
+        .span_2_of_3 {
+            width: 66.1%;
+        }
+
+        .span_1_of_3 {
+            width: 32.2%;
+        }
+
+        /* Header & Navigation */
+        header {
+            max-width: 100%;
+            background: #222;
+            /*FallBack*/
+            background: rgba(0, 0, 0, .6);
+            padding: 20px;
+        }
+
+        .logo {
+            text-align: center;
+            color: #fff;
+            font-size: 3em;
+            font-weight: 400;
+            font-family: 'Poiret One', cursive;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+            -webkit-transition: max-height 0.5s;
+            transition: max-height 0.5s;
+        }
+
+        /* Blog Posts */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .blog-post {
+            background: #fff;
+            margin: 0 auto 2em auto;
+            padding: 35px 30px;
+            box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .side-post {
+            background: #fff;
+            margin: 0 auto 1.5em auto;
+            width: 15em;
+            padding: 20px;
+        }
+
+        .blog-content {
+            font-size: 1em;
+            border-left: 5px solid #8EE5EE;
+            padding-left: 15px;
+        }
+
+        .side-content {
+            font-size: .9em;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
+        .blog-title {
+            font-size: 2.5em;
+            margin-top: 5px;
+        }
+
+        .date {
+            font-size: 1em;
+            font-weight: 400;
+            color: #9C9C9C;
+            margin-top: -10px;
+            text-decoration: underline;
+            text-decoration-color: currentColor;
+        }
+
+        .post-link {
+            color: #009ACD;
+            font-style: italic;
+            transition: all 0.4s;
+        }
+
+        .post-link:hover {
+            color: #005c7b;
+            text-decoration: underline;
+            text-decoration-color: currentColor;
+            cursor: pointer;
+        }
+
+        /* Button */
+        .button {
+            display: block;
+            padding: 15px 20px;
+            margin-top: .8em;
+            background: #009ACD;
+            text-align: center;
+            color: #fff;
+            font-size: 1.4em;
+            border-radius: 3px;
+            transition: all .4s ease-in;
+        }
+
+        .button:hover {
+            background: #005c7b;
+        }
+
+        /*Media Queries*/
+        /* @900px*/
+        @media only screen and (max-width: 56.25em) {
+            .col {
+                margin: 1% 0 1% 0%;
+            }
+
+            .span_3_of_3,
+            .span_2_of_3,
+            .span_1_of_3 {
+                width: 100%;
+            }
+
+            .side-post {
+                width: 42%;
+                float: left;
+                margin: -2% 0 1% 1.6%;
+            }
+        }
+
+        /* @685px*/
+        @media only screen and (max-width: 42.813em) {
+            .side-post {
+                width: auto;
+                padding: 15px;
+                margin: -2% auto 8% auto;
+            }
+
+            .blog-title {
+                font-size: 1.95em;
+            }
+
+            .date {
+                font-size: .9em;
+            }
+        }
+
+        /* @480px */
+        @media only screen and (max-width: 30em) {
+            .reveal {
+                max-height: 100%;
+            }
+        }
+
+        /* @380px*/
+        @media only screen and (max-width: 23.75em) {
+
+            .blog-content,
+            .post-link {
+                font-size: .9em;
+            }
+
+            .side-content {
+                font-size: .8em;
+            }
+
+            .button {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">Algoritmo de ordenamiento</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="section">
+            <aside class="col span_1_of_3">
+                <div class="side-post">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif" alt="img" />
+                    <p class="side-content">
+                        En computación y matemáticas un algoritmo de ordenamiento es un algoritmo que pone elementos de una lista o un vector en una secuencia dada por una relación de orden, es decir, el resultado de salida ha de ser una permutación —o reordenamiento— de la entrada que satisfaga la relación de orden dada. Las relaciones de orden más usadas son el orden numérico y el orden lexicográfico. Ordenamientos eficientes son importantes para optimizar el uso de otros algoritmos (como los de búsqueda y fusión) que requieren listas ordenadas para una ejecución rápida. También es útil para poner datos en forma canónica y para generar resultados legibles por humanos.
+                    </p>
+                </div>
+                <!--       <div class="side-post">
+              <p class="side-content">
+                Ultricies lacus et, non orci gravida purus augue integer, sed turpis.
+                Erat dapibus. Eleifend massa scelerisque, aenean penatibus laoreet ut
+                in.
+              </p>
+              <a href="#" class="button">Subscribe!</a>
+            </div> -->
+            </aside>
+
+            <div class="col span_2_of_3">
+                <div class="blog-post">
+                    <h1>Ordenamiento de burbuja</h1>
+                    
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/r0C4GjYA3GI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe height="1000px" width="100%" src="https://repl.it/@FrankRojas/ordenamiento-de-burbuja?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
