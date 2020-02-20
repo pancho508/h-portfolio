@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ordenamiento de burbuja</title>
+    <style>
+      /* Base Styles */
+      body {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1.4em;
+        color: #222;
+        background: #474747;
+        font-family: "Lato", sans-serif;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 3px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Grid */
+      .section {
+        clear: both;
+        padding: 0;
+        margin: 0;
+      }
+
+      .col {
+        display: block;
+        float: left;
+        margin: 1% 0 1% 1.6%;
+      }
+
+      .col:first-child {
+        margin-left: 0;
+      }
+
+      .span_3_of_3 {
+        width: 100%;
+      }
+
+      .span_2_of_3 {
+        width: 66.1%;
+      }
+
+      .span_1_of_3 {
+        width: 32.2%;
+      }
+
+      /* Header & Navigation */
+      header {
+        max-width: 100%;
+        background: #222;
+        /*FallBack*/
+        background: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+      }
+
+      .logo {
+        text-align: center;
+        color: #fff;
+        font-size: 3em;
+        font-weight: 400;
+        font-family: "Poiret One", cursive;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        color: black;
+        text-align: center;
+        -webkit-transition: max-height 0.5s;
+        transition: max-height 0.5s;
+      }
+
+      /* Blog Posts */
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .blog-post {
+        background: #fff;
+        margin: 0 auto 2em auto;
+        padding: 35px 30px;
+        box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.3);
+      }
+
+      .side-post {
+        background: #fff;
+        margin: 0 auto 1.5em auto;
+        width: 15em;
+        padding: 20px;
+      }
+
+      .blog-content {
+        font-size: 1em;
+        border-left: 5px solid #8ee5ee;
+        padding-left: 15px;
+      }
+
+      .side-content {
+        font-size: 0.9em;
+        margin-top: 8px;
+        margin-bottom: 0;
+      }
+
+      .blog-title {
+        font-size: 2.5em;
+        margin-top: 5px;
+      }
+
+      .date {
+        font-size: 1em;
+        font-weight: 400;
+        color: #9c9c9c;
+        margin-top: -10px;
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+      }
+
+      .post-link {
+        color: #009acd;
+        font-style: italic;
+        transition: all 0.4s;
+      }
+
+      .post-link:hover {
+        color: #005c7b;
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        cursor: pointer;
+      }
+
+      /* Button */
+      .button {
+        display: block;
+        padding: 15px 20px;
+        margin-top: 0.8em;
+        background: #009acd;
+        text-align: center;
+        color: #fff;
+        font-size: 1.4em;
+        border-radius: 3px;
+        transition: all 0.4s ease-in;
+      }
+
+      .button:hover {
+        background: #005c7b;
+      }
+
+      /*Media Queries*/
+      /* @900px*/
+      @media only screen and (max-width: 56.25em) {
+        .col {
+          margin: 1% 0 1% 0%;
+        }
+
+        .span_3_of_3,
+        .span_2_of_3,
+        .span_1_of_3 {
+          width: 100%;
+        }
+
+        .side-post {
+          width: 42%;
+          float: left;
+          margin: -2% 0 1% 1.6%;
+        }
+      }
+
+      /* @685px*/
+      @media only screen and (max-width: 42.813em) {
+        .side-post {
+          width: auto;
+          padding: 15px;
+          margin: -2% auto 8% auto;
+        }
+
+        .blog-title {
+          font-size: 1.95em;
+        }
+
+        .date {
+          font-size: 0.9em;
+        }
+      }
+
+      /* @480px */
+      @media only screen and (max-width: 30em) {
+        .reveal {
+          max-height: 100%;
+        }
+      }
+
+      /* @380px*/
+      @media only screen and (max-width: 23.75em) {
+        .blog-content,
+        .post-link {
+          font-size: 0.9em;
+        }
+
+        .side-content {
+          font-size: 0.8em;
+        }
+
+        .button {
+          padding: 10px 15px;
+        }
+      }
+    </style>
+    <link rel="icon" href="../../images/favIcon.png" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="logo">DeskDock</h1>
+    </header>
+
+    <div class="container">
+      <div class="section">
+        <aside class="col span_1_of_3">
+          <div class="side-post">
+            <img
+              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftchgdns.de%2Fwp-content%2Fuploads%2Fdeskdock-android-geraet-mit-tastatur-und-maus-des-rechners-bedienen.jpg&f=1&nofb=1"
+              alt="img"
+            />
+          </div>
+          <!--       <div class="side-post">
+              <p class="side-content">
+                Ultricies lacus et, non orci gravida purus augue integer, sed turpis.
+                Erat dapibus. Eleifend massa scelerisque, aenean penatibus laoreet ut
+                in.
+              </p>
+              <a href="#" class="button">Subscribe!</a>
+            </div> -->
+        </aside>
+
+        <div class="col span_2_of_3">
+          <div class="blog-post">
+            <p>&nbsp;</p>
+            <h1>
+              <strong
+                >C&oacute;mo compartir el mouse/teclado de tu computadora a tu
+                tableta</strong
+              >
+            </h1>
+            <p>
+              <span style="font-weight: 400;"
+                >Tengo una tableta y estuve tratando de encontrar una forma de
+                usarla como un monitor externo para mi computadora una
+                soluci&oacute;n es </span
+              ><span style="font-weight: 400;"
+                >una sesi&oacute;n con VNC y sinergia ya que uso linux
+                principalmente. </span
+              ><span style="font-weight: 400;"
+                >Pero esto conlleva hacer la transmisi&oacute;n de mi PC con una
+                tableta con p&eacute;rdidas de transmisi&oacute;n, otra cosa es
+                en un lugar donde estoy us&oacute; la red p&uacute;blica y hay
+                muchos hackers.&nbsp;</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                >Encontre a DeskDock una app que deja que controles tu android
+                tablet usando tu pc. (versi&oacute;n Pro&nbsp; teclado)</span
+              >
+            </p>
+            <p>&nbsp;</p>
+            <h3><strong>La configuraci&oacute;n&nbsp;</strong></h3>
+            <p>
+              <span style="font-weight: 400;"
+                >As&iacute; es como se ve: la computadora y el tel&eacute;fono
+                Android est&aacute;n conectados mediante un cable USB y se
+                est&aacute; ejecutando un peque&ntilde;o software en ambos
+                dispositivos. Ahora, si mueve el cursor m&aacute;s all&aacute;
+                del borde de la pantalla del escritorio, aparecer&aacute;
+                autom&aacute;ticamente en la pantalla de Android (si el Android
+                est&aacute; en modo de suspensi&oacute;n, se activar&aacute;). Y
+                ahora, puede controlar su Android con el mouse .&nbsp;</span
+              >
+            </p>
+            <h3><strong>Nota</strong></h3>
+            <ul>
+              <li>
+                Gratis y funciona a la perfección en Windows, Mac y Linux.
+              </li>
+
+              <li>No se requiere root.</li>
+
+              <li>Bajo consumo de batería.</li>
+            </ul>
+            <h3><strong>Siga los pasos:</strong></h3>
+            <p>
+              <span style="font-weight: 400;"># 1 Descargue </span
+              ><a
+                href="https://play.google.com/store/apps/details?id=com.floriandraschbacher.deskdock.free&amp;hl=en"
+                ><strong>Deskdock de Google Play.</strong></a
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                >La aplicaci&oacute;n es gratuita (se admiten anuncios) en
+                Google. Pero si desea compartir el teclado, el portapapeles y
+                eliminar anuncios, obtenga la </span
+              ><a
+                href="https://play.google.com/store/apps/details?id=com.floriandraschbacher.deskdock.pro&amp;hl=en"
+                ><span style="font-weight: 400;">versi&oacute;n pro</span></a
+              ><span style="font-weight: 400;"> por $ 99 pesos.</span>
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 2 A continuaci&oacute;n, descargue la </span
+              ><a
+                href="https://fdmobileinventions.blogspot.in/p/deskdock-server.html"
+                ><strong>aplicaci&oacute;n de servidor DeskDock</strong></a
+              ><span style="font-weight: 400;">
+                en su computadora. Es un peque&ntilde;o archivo zip de 1 MB y
+                est&aacute; disponible para Windows, Mac y Linux.</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 3 Una vez que haya terminado de descargar la
+                aplicaci&oacute;n del servidor,</span
+              ><strong> descompr&iacute;malo y ejec&uacute;telo</strong
+              ><span style="font-weight: 400;">
+                en su computadora. Le pedir&aacute; que </span
+              ><strong>instale Java</strong
+              ><span style="font-weight: 400;">
+                en su computadora (si a&uacute;n no lo tiene). Por lo tanto,
+                instale el &uacute;ltimo paquete JRE.</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                >Ahora aqu&iacute; es donde se vuelve un poco </span
+              ><strong>confuso</strong><span style="font-weight: 400;">.</span>
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                >Existen principalmente dos versiones de Java: JRE y JDK. JRE es
+                para ejecutar aplicaciones java y JDK es para hacer aplicaciones
+                java. Como solo queremos ejecutar un programa, debe instalar la
+                &uacute;ltima versi&oacute;n de JRE. Pero eso no funcion&oacute;
+                para m&iacute;. Cuando se le pregunt&oacute; al desarrollador de
+                la aplicaci&oacute;n, respondi&oacute; "para algunos sistemas
+                operativos como Mac, debe usar JDK".</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                >Entonces, si JRE no funciona para usted, aseg&uacute;rese de
+                haber instalado JDK en su computadora.</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 4 Una vez que haya instalado Java correctamente en su
+                computadora,</span
+              ><strong> instale la aplicaci&oacute;n DeskDock</strong
+              ><span style="font-weight: 400;">.&nbsp;</span>
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 5 Ahora vaya a su tel&eacute;fono inteligente o tableta
+                Android, vaya a Configuraci&oacute;n&gt; Opciones de
+                desarrollador y habilite la </span
+              ><strong>USB Debugging</strong
+              ><span style="font-weight: 400;"
+                >. si no est&aacute; en el men&uacute; debes presionar build
+                number diez veces.</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 5 Luego, conecta tu Android a tu computadora a trav&eacute;s
+                de un </span
+              ><strong>USB</strong
+              ><span style="font-weight: 400;"> cable.</span>
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 6 Aseg&uacute;rese de que el </span
+              ><strong>servidor DeskDock se est&eacute; ejecutando</strong
+              ><span style="font-weight: 400;">
+                en la computadora. Tambien instala los drivers de adb para
+                linux. </span
+              ><a
+                href="https://www.linuxbabe.com/ubuntu/how-to-install-adb-fastboot-ubuntu-16-04-16-10-14-04"
+                ><span style="font-weight: 400;"
+                  >https://www.linuxbabe.com/ubuntu/how-to-install-adb-fastboot-ubuntu-16-04-16-10-14-04</span
+                ></a
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                >&nbsp;&nbsp;Luego vaya a su tel&eacute;fono Android, abra la </span
+              ><strong>aplicaci&oacute;n DeskDock</strong
+              ><span style="font-weight: 400;"> y toque </span
+              ><strong>conectar</strong
+              ><span style="font-weight: 400;"
+                >. Si todo funciona bien, la aplicaci&oacute;n del servidor
+                detectar&aacute; tu Android y se conectar&aacute; a
+                &eacute;l.</span
+              >
+            </p>
+            <p>
+              <span style="font-weight: 400;"
+                ># 7 Ahora, si mueve el cursor al borde inferior izquierdo de la
+                pantalla y aparecer&aacute; en la pantalla de Android.</span
+              >
+            </p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </div>
+          <!-- end -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
