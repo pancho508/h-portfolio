@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+        * {
+            font-family: 'Metal Mania', cursive;
+        }
+
+        #header {
+            width: 100%;
+            height: 125px;
+            display: flex;
+            position: fixed;
+            background-color: black;
+            color: red;
+        }
+
+        #header-img {
+            width: 400px;
+            height: 125px;
+        }
+
+        #nav-bar {
+            display: flex;
+            width: 40%;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: 35%;
+        }
+
+        section {
+            height: 600px;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 1rem 1rem 1rem;
+            text-align: center;
+        }
+
+        .title {
+            height: 8rem;
+            flex: 1 100%;
+            padding-top: 1rem;
+        }
+
+        .one {
+            height: 800px;
+            padding-top: 6rem;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-size: 1.6em;
+        }
+
+        .two {
+            height: 500px;
+            background-color: black;
+            color: #FF9933;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .tree {
+            height: 500px;
+            align-items: center;
+            justify-content: space-around;
+            overflow: hidden;
+            text-align: center;
+            font-size: 1.6em;
+        }
+
+        .four {
+            background-color: black;
+            color: #FF9933;
+            font-size: 1.4em;
+            height: 500px;
+        }
+
+        .five {
+            font-size: 1.2em;
+            height: 800px;
+        }
+
+        .six {
+            height: 500px;
+            font-size: 1.6em;
+        }
+
+        .split {
+            display: flex;
+            padding-top: 1rem;
+        }
+
+        .half1 {
+            width: 50%;
+        }
+
+        .half2 {
+            width: 50%;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .innerImg {
+            flex-shrink: 0;
+            min-width: 90%;
+            min-height: 90%;
+        }
+
+        .poema {
+            background-image: url('https://miro.medium.com/max/890/1*xG69SfKHsFYXx2qebwBpZA.jpeg');
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+            z-index: -1;
+            margin-top: 1rem;
+            height: 20%;
+        }
+
+        .multipleCracks {
+            height: 50%;
+            padding-top: 1rem;
+        }
+
+        h1 {
+            font-size: 2.4em;
+        }
+
+        @media screen and (max-width: 650px) {
+            body {
+                background-color: olive;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <header id="header">
+            <img id="header-img" src="http://www.westcoastfireworks.com.au/images/rWFqSrlk.png" alt="logo">
+            <nav id="nav-bar">
+                <a class="nav-link" href="#one">Castillos</a> |
+                <a class="nav-link" href="#two">Torritos</a> |
+                <a class="nav-link" href="#tree">tree</a> |
+                <a class="nav-link" href="#four">four</a> |
+                <a class="nav-link" href="#five">five</a> |
+                <a class="nav-link" href="#six">Six</a>
+            </nav>
+        </header>
+        <section class="one" id="one">
+            <div class="title">
+                <h1>Castillos</h1>
+            </div>
+            <div class="split">
+                <div class="half1">
+                    <img class="innerImg"
+                        src="http://3.bp.blogspot.com/_TiFdGGdIVa4/SpKuKiRIp7I/AAAAAAAAAkY/OdYQEGhZLb4/s400/castillo.jpg"
+                        alt="cuetes" />
+                </div>
+                <div class="half2">
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel dignissim eros. Aenean neque
+                        nibh, volutpat at hendrerit at, commodo in mauris. Mauris vestibulum pulvinar ipsum nec
+                        elementum. Vivamus a turpis pharetra, consectetur quam iaculis, finibus mauris. Suspendisse sed
+                        lacus pretium, aliquam nulla in, elementum ligula. Mauris ligula purus, maximus vitae mauris a,
+                        semper semper leo. Mauris pulvinar massa vitae sagittis elementum.</p>
+                    <p>Morbi non mattis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas. Sed in hendrerit metus. Vestibulum facilisis interdum dui vel auctor.
+                        Cras mi felis, lacinia dapibus ex id, convallis scelerisque ipsum. Fusce accumsan elit id tellus
+                        placerat, nec varius ex maximus. Ut sagittis lacus sed sapien tempor bibendum. Suspendisse nunc
+                        purus, imperdiet vitae suscipit sit amet, condimentum in justo. Mauris sagittis, quam et dictum
+                        bibendum, metus nulla luctus nisl, ut mattis ex justo eu mi. Nunc metus lectus, posuere sit amet
+                        volutpat eu, venenatis sed dui. Donec tempus quam eget massa varius tincidunt.</p>
+                    <p>Suspendisse eu mi dictum lacus vestibulum elementum id ut mauris. Nulla eget risus sit amet enim
+                        placerat sagittis sed ultrices enim. Vestibulum nec posuere ipsum, in tincidunt enim. Morbi
+                        mauris magna, imperdiet at maximus vel, malesuada ultricies ipsum. Nam at consequat elit. Cras
+                        turpis nunc, faucibus vel erat id, mattis ultricies odio. Nunc ac viverra orci, in bibendum
+                        diam. Sed ac velit a nibh maximus scelerisque vitae eget erat. Integer faucibus neque libero, id
+                        molestie nulla posuere in. Nunc aliquam sodales cursus. Nullam commodo, nisi ac efficitur
+                        tristique, metus orci venenatis urna, et efficitur lacus urna ac odio. Phasellus venenatis massa
+                        vitae lobortis facilisis. Duis laoreet arcu ut nulla pharetra convallis. Sed sed pellentesque
+                        risus. Curabitur rutrum felis quis sem feugiat, vel pulvinar ex tincidunt. Quisque sed erat
+                        mauris.</p>
+                </div>
+            </div>
+        </section>
+        <section class="two" id="two">
+            <div class="title">
+                <h1>Torritos</h1>
+            </div>
+            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/D0FcQlViS5U" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </section>
+        <section class="tree" id="tree">
+            <div class="title">
+                <h1>Tree</h1>
+            </div>
+            <div>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel dignissim eros. Aenean neque
+                    nibh, volutpat at hendrerit at, commodo in mauris. Mauris vestibulum pulvinar ipsum nec elementum.
+                    Vivamus a turpis pharetra, consectetur quam iaculis, finibus mauris. Suspendisse sed lacus pretium,
+                    aliquam nulla in, elementum ligula. Mauris ligula purus, maximus vitae mauris a, semper semper leo.
+                    Mauris pulvinar massa vitae sagittis elementum.</p>
+
+                <p>Morbi non mattis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                    turpis egestas. Sed in hendrerit metus. Vestibulum facilisis interdum dui vel auctor. Cras mi felis,
+                    lacinia dapibus ex id, convallis scelerisque ipsum. Fusce accumsan elit id tellus placerat, nec
+                    varius ex maximus. Ut sagittis lacus sed sapien tempor bibendum. Suspendisse nunc purus, imperdiet
+                    vitae suscipit sit amet, condimentum in justo. Mauris sagittis, quam et dictum bibendum, metus nulla
+                    luctus nisl, ut mattis ex justo eu mi. Nunc metus lectus, posuere sit amet volutpat eu, venenatis
+                    sed dui. Donec tempus quam eget massa varius tincidunt.</p>
+
+                <p>Suspendisse eu mi dictum lacus vestibulum elementum id ut mauris. Nulla eget risus sit amet enim
+                    placerat sagittis sed ultrices enim. Vestibulum nec posuere ipsum, in tincidunt enim. Morbi mauris
+                    magna, imperdiet at maximus vel, malesuada ultricies ipsum. Nam at consequat elit. Cras turpis nunc,
+                    faucibus vel erat id, mattis ultricies odio. Nunc ac viverra orci, in bibendum diam. Sed ac velit a
+                    nibh maximus scelerisque vitae eget erat. Integer faucibus neque libero, id molestie nulla posuere
+                    in. Nunc aliquam sodales cursus. Nullam commodo, nisi ac efficitur tristique, metus orci venenatis
+                    urna, et efficitur lacus urna ac odio. Phasellus venenatis massa vitae lobortis facilisis. Duis
+                    laoreet arcu ut nulla pharetra convallis. Sed sed pellentesque risus. Curabitur rutrum felis quis
+                    sem feugiat, vel pulvinar ex tincidunt. Quisque sed erat mauris.</p>
+            </div>
+        </section>
+        <section class="four" id="four">
+            <div class="title">
+                <h1>Four</h1>
+            </div>
+            <div class="poema">
+                _______________________________
+            </div>
+            <div class="multipleCracks">
+                Morbi non mattis nulla.<br> Pellentesque habitant morbi tristique senectus et netus et malesuada
+                fames ac turpis egestas. Sed in hendrerit metus.<br> Vestibulum facilisis interdum dui vel
+                auctor.<br> Cras mi felis, lacinia dapibus ex id, convallis scelerisque ipsum.<br> Fusce accumsan
+                elit id tellus placerat, nec varius ex maximus.<br>
+                Ut sagittis lacus sed sapien tempor bibendum. Suspendisse nunc purus, imperdiet vitae suscipit sit
+                amet, condimentum in justo. <br>
+            </div>
+        </section>
+        <section class="five" id="five">
+            <div class="title">
+                <h1>Five</h1>
+            </div>
+            <div class="split">
+                <div class="half2">
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel dignissim eros. Aenean neque
+                        nibh, volutpat at hendrerit at, commodo in mauris. Mauris vestibulum pulvinar ipsum nec
+                        elementum. Vivamus a turpis pharetra, consectetur quam iaculis, finibus mauris. Suspendisse sed
+                        lacus pretium, aliquam nulla in, elementum ligula. Mauris ligula purus, maximus vitae mauris a,
+                        semper semper leo. Mauris pulvinar massa vitae sagittis elementum.</p>
+                    <p>Morbi non mattis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas. Sed in hendrerit metus. Vestibulum facilisis interdum dui vel auctor.
+                        Cras mi felis, lacinia dapibus ex id, convallis scelerisque ipsum. Fusce accumsan elit id tellus
+                        placerat, nec varius ex maximus. Ut sagittis lacus sed sapien tempor bibendum. Suspendisse nunc
+                        purus, imperdiet vitae suscipit sit amet, condimentum in justo. Mauris sagittis, quam et dictum
+                        bibendum, metus nulla luctus nisl, ut mattis ex justo eu mi. Nunc metus lectus, posuere sit amet
+                        volutpat eu, venenatis sed dui. Donec tempus quam eget massa varius tincidunt.</p>
+                    <p>Suspendisse eu mi dictum lacus vestibulum elementum id ut mauris. Nulla eget risus sit amet enim
+                        placerat sagittis sed ultrices enim. Vestibulum nec posuere ipsum, in tincidunt enim. Morbi
+                        mauris magna, imperdiet at maximus vel, malesuada ultricies ipsum. Nam at consequat elit. Cras
+                        turpis nunc, faucibus vel erat id, mattis ultricies odio. Nunc ac viverra orci, in bibendum
+                        diam. Sed ac velit a nibh maximus scelerisque vitae eget erat. Integer faucibus neque libero, id
+                        molestie nulla posuere in. Nunc aliquam sodales cursus. Nullam commodo, nisi ac efficitur
+                        tristique, metus orci venenatis urna, et efficitur lacus urna ac odio. Phasellus venenatis massa
+                        vitae lobortis facilisis. Duis laoreet arcu ut nulla pharetra convallis. Sed sed pellentesque
+                        risus. Curabitur rutrum felis quis sem feugiat, vel pulvinar ex tincidunt. Quisque sed erat
+                        mauris.</p>
+                </div>
+                <div class="half2">
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel dignissim eros. Aenean neque
+                        nibh, volutpat at hendrerit at, commodo in mauris. Mauris vestibulum pulvinar ipsum nec
+                        elementum. Vivamus a turpis pharetra, consectetur quam iaculis, finibus mauris. Suspendisse sed
+                        lacus pretium, aliquam nulla in, elementum ligula. Mauris ligula purus, maximus vitae mauris a,
+                        semper semper leo. Mauris pulvinar massa vitae sagittis elementum.</p>
+                    <p>Morbi non mattis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas. Sed in hendrerit metus. Vestibulum facilisis interdum dui vel auctor.
+                        Cras mi felis, lacinia dapibus ex id, convallis scelerisque ipsum. Fusce accumsan elit id tellus
+                        placerat, nec varius ex maximus. Ut sagittis lacus sed sapien tempor bibendum. Suspendisse nunc
+                        purus, imperdiet vitae suscipit sit amet, condimentum in justo. Mauris sagittis, quam et dictum
+                        bibendum, metus nulla luctus nisl, ut mattis ex justo eu mi. Nunc metus lectus, posuere sit amet
+                        volutpat eu, venenatis sed dui. Donec tempus quam eget massa varius tincidunt.</p>
+                    <p>Suspendisse eu mi dictum lacus vestibulum elementum id ut mauris. Nulla eget risus sit amet enim
+                        placerat sagittis sed ultrices enim. Vestibulum nec posuere ipsum, in tincidunt enim. Morbi
+                        mauris magna, imperdiet at maximus vel, malesuada ultricies ipsum. Nam at consequat elit. Cras
+                        turpis nunc, faucibus vel erat id, mattis ultricies odio. Nunc ac viverra orci, in bibendum
+                        diam. Sed ac velit a nibh maximus scelerisque vitae eget erat. Integer faucibus neque libero, id
+                        molestie nulla posuere in. Nunc aliquam sodales cursus. Nullam commodo, nisi ac efficitur
+                        tristique, metus orci venenatis urna, et efficitur lacus urna ac odio. Phasellus venenatis massa
+                        vitae lobortis facilisis. Duis laoreet arcu ut nulla pharetra convallis. Sed sed pellentesque
+                        risus. Curabitur rutrum felis quis sem feugiat, vel pulvinar ex tincidunt. Quisque sed erat
+                        mauris.</p>
+                </div>
+            </div>
+        </section>
+        <section class="six" id="six">
+            <div class="title">
+                <h1>Six</h1>
+            </div>
+            <form id="form" action="https://www.freecodecamp.com/email-submit">
+                <h1>Contact us for furter details</h1>
+                <input name="email" id="email" type="email" placeholder="Enter your email address" required />
+                <input id="submit" type="submit" value="Get Started" class="btn" />
+            </form>
+        </section>
+        <div class="container">
+            <footer>
+
+            </footer>
+        </div>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>
