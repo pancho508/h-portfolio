@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palidrome Checker</title>
+    <style>
+      :root {
+        --bg-main-color: #000000;
+        --toned-down-white: #f1f1f1;
+        --highlight-main: #c6bed1;
+        --hover-main: #bf32c4;
+        --active-main: #d411a4;
+      }
+
+      body {
+        background-color: var(--bg-main-color);
+        color: var(--toned-down-white);
+        font-family: "Montserrat", sans-serif;
+      }
+
+      main {
+        margin-top: 10%;
+      }
+
+      /*first section start, wrapper formatting*/
+
+      .content-wrapper {
+        padding-right: 15px;
+        padding-left: 15px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 750px;
+      }
+
+      .content-wrapper h1,
+      .content-wrapper p {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .content-wrapper h1 {
+        text-transform: uppercase;
+        font-weight: bolder;
+        letter-spacing: 3px;
+        box-sizing: border-box;
+      }
+
+      .content-wrapper p {
+        box-sizing: border-box;
+        letter-spacing: 2px;
+        color: var(--highlight-main);
+        font-family: "Lato", sans-serif;
+        max-width: 400px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      /* user input area start */
+      .check-wrapper {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      /*btn formatting &overwrite boostrap base*/
+      .btn:focus {
+        box-shadow: 0 0 0 0.2rem rgba(97, 78, 125, 0.5);
+        color: var(--toned-down-white);
+      }
+
+      .btn-primary {
+        background-color: var(--highlight-main);
+        border-color: var(--highlight-main);
+        width: 130px;
+        height: 40px;
+        transition: 0.2s linear;
+        margin-top: 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-primary:hover {
+        background-color: var(--hover-main);
+        border-color: var(--hover-main);
+        transition: 0.2s linear;
+      }
+      .btn-primary:focus,
+      .btn-primary.focus {
+        box-shadow: 0 0 0 0.4rem rgba(40, 30, 54, 0.5);
+      }
+
+      .btn-primary:not(:disabled):not(.disabled):active,
+      .btn-primary:not(:disabled):not(.disabled).active {
+        background-color: var(--active-main);
+        border-color: var(--active-main);
+      }
+      .btn-primary:not(:disabled):not(.disabled):active:focus,
+      .btn-primary:not(:disabled):not(.disabled).active:focus {
+        box-shadow: none;
+      }
+
+      /*btn text roll up effect */
+      .btn span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.2s linear;
+      }
+
+      .btn:hover span,
+      .btn:focus span {
+        position: absolute;
+        top: -100px;
+        transition: 0.2s linear;
+      }
+
+      .btn:before {
+        content: "Check!";
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.2s linear;
+      }
+      .btn:hover:before,
+      .btn:focus:before {
+        content: "Check!";
+        top: 50%;
+        transition: 0.2s linear;
+      }
+      /* active class for keypress triggered clicks*/
+      .activeBtn {
+        background-color: var(--active-main);
+        border-color: var(--active-main);
+        color: var(--toned-down-white);
+        width: 130px;
+        transition: 0.2s linear;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 0 0.2rem rgba(97, 78, 125, 0.5);
+      }
+
+      /*input formatting*/
+      .form-control,
+      .form-control:focus {
+        background-color: var(--bg-main-color);
+        border-color: rgba(241, 241, 241, 0.3);
+        color: var(--toned-down-white);
+        letter-spacing: 2px;
+      }
+
+      .form-control:focus {
+        border-color: rgba(241, 241, 241, 0.5);
+        border-width: 2px;
+        box-shadow: none;
+      }
+
+      /*check results messages */
+      #result-message {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        letter-spacing: 3px;
+        min-height: 70px;
+      }
+      #user-word {
+        color: var(--highlight-main);
+      }
+
+      #result-message span {
+        word-wrap: break-word;
+      }
+
+      /*check mode div,start of second section */
+
+      /*toggle switch formatting*/
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--highlight-main);
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "1";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: #fff;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        color: var(--highlight-main);
+        font-size: 10px;
+        padding-top: 5px;
+        box-sizing: border-box;
+      }
+
+      input:checked + .slider {
+        background-color: var(--toned-down-white);
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+
+      input:checked + .slider:before {
+        background-color: var(--highlight-main);
+        color: var(--toned-down-white);
+        content: "2";
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      #toggle-palChecks {
+        text-align: center;
+      }
+
+      /*check mode info area*/
+      .fa-question-circle {
+        height: 20px;
+        width: 20px;
+        font-size: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+        position: relative;
+        top: 2px;
+        user-select: none;
+      }
+
+      .fa-question-circle:hover {
+        color: var(--highlight-main);
+      }
+      .fa-question-circle:active {
+        color: #6c568c;
+      }
+
+      #check-mode {
+        display: inline-block;
+        letter-spacing: 2px;
+        user-select: none;
+      }
+
+      #info-div {
+        color: var(--highlight-main);
+        font-family: "Lato", sans-serif;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        visibility: hidden;
+      }
+
+      #info-div span {
+        color: var(--toned-down-white);
+      }
+
+      @media (max-width: 430px) {
+        h1 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 0.9rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        #check-btn {
+          font-size: 12px;
+          width: 100px;
+        }
+        .container {
+          padding-right: 0;
+          padding-left: 0;
+        }
+        #result-message {
+          margin-bottom: 0;
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container-fluid">
+      <section class="content-wrapper">
+        <h1>Palindrome Checker</h1>
+        <p>
+          A "Palindrome" is a sequence of text that reads the same if its
+          reversed, exmaple: Star rats
+        </p>
+        <div class="container check-wrapper input-group">
+          <input
+            id="user-input"
+            class="form-control"
+            type="text"
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <div class="input-group-append">
+            <button id="check-btn" class="btn btn-primary">
+              <span>Palindrome?</span>
+            </button>
+          </div>
+        </div>
+        <h3 id="result-message">
+          <span id="user-word"></span><span id="result-text"></span>
+        </h3>
+      </section>
+
+      <section id="toggle-palChecks">
+        <label class="switch">
+          <input type="checkbox" id="info-toggle-switch" />
+          <span class="slider round"></span>
+        </label>
+        <div>
+          <p id="check-mode">Check mode</p>
+          <i class="far fa-question-circle"></i>
+          <div id="info-div">
+            <small
+              ><span> 1 </span> - ignores spaces, punctuation and special
+              characters when checking if input is a palindrome. Recommended
+              setting.</small
+            >
+            <br /><br />
+            <small
+              ><span> 2 </span> - includes spaces, punctuation and special
+              characters in palindrome search.</small
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      window.onload = function() {
+        let userInput = document.getElementById("user-input");
+        let checkBtn = document.getElementById("check-btn");
+        let infoIcon = document.querySelector(".fa-question-circle");
+
+        checkBtn.onclick = handleUserInput; //gets input value and triggers palindrom check based on check mode
+        userInput.onkeypress = keyPressCheck; //if enter is pressed after writing in input, triggers click on checkBtn
+        infoIcon.onclick = toggleInfoDiv; //toggles check mode info text
+
+        function handleUserInput() {
+          let userInput = document.getElementById("user-input").value; //original input for check mode 2
+          let copyRespectSpaces = userInput.replace(/\s/g, "&nbsp;"); //innerHTMl doesnt' save multiple spaces, it concats them into one=>keeping a copy with non breaking space
+          let cleanInput = userInput.toLowerCase().replace(/[\W_\s]/g, ""); //non-chars excluded for check mode 1
+          let checkBtn = document.getElementById("check-btn");
+          let infoToggleSwitch = document.getElementById("info-toggle-switch"); //toggles check modes
+          let palCheck; //will store returned value from palindrom function
+
+          toggleActive(checkBtn); //mimics active pseudoclass when enter is pressed on button instead of mouse click
+
+          if (!infoToggleSwitch.checked) {
+            //check mode 1 corresponds to input not checked
+            palCheck = palindrome(cleanInput);
+          } else {
+            palCheck = palindrome(userInput.toLowerCase()); //check mode 2 corresponds to input checked
+          }
+
+          displayMessage(palCheck, copyRespectSpaces); //displays result of palindrom check
+        }
+
+        function toggleActive(checkBtn) {
+          //active pseudo-class cannot be activated from js, need to toggle separate active class to show button click effect on keypress
+          checkBtn.classList.remove("btn-primary");
+          checkBtn.classList.add("activeBtn");
+          checkBtn.children[0].innerHTML = "Check!";
+          setTimeout(() => {
+            checkBtn.classList.remove("activeBtn"); //adding active classes and removing them with delay to mimic button being clicked
+            checkBtn.classList.add("btn-primary");
+            checkBtn.children[0].innerHTML = "Palindrome?";
+          }, 200);
+        }
+
+        function palindrome(str) {
+          // for loop palindrom check runs faster than string=string reverse join way of checking :)
+          let len = str.length;
+          for (let i = 0; i < len / 2; i++) {
+            if (str[i] !== str[len - 1 - i]) {
+              return false;
+            }
+          }
+          return true;
+        }
+
+        function displayMessage(palCheck, copyRespectSpaces) {
+          let resultMessage = document.getElementById("result-text");
+          let userWord = document.getElementById("user-word");
+
+          if (palCheck) {
+            userWord.innerHTML = `"${copyRespectSpaces}"`;
+            resultMessage.innerHTML = ` is a palindrome`;
+          } else {
+            userWord.innerHTML = `"${copyRespectSpaces}"`;
+            resultMessage.innerHTML = ` is not a palindrome`;
+          }
+        }
+
+        function keyPressCheck(e) {
+          let checkBtn = document.getElementById("check-btn");
+
+          if (e.keyCode === 13) {
+            toggleActive(checkBtn); //mimics active pseudoclass when enter is pressed on input
+            checkBtn.click(); //triggers click event on checkBtn
+          }
+        }
+
+        function toggleInfoDiv() {
+          let infoDiv = document.getElementById("info-div");
+
+          if (getComputedStyle(infoDiv).visibility == "hidden") {
+            infoDiv.style.visibility = "visible";
+          } else {
+            infoDiv.style.visibility = "hidden";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
