@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Numeral Converter</title>
+    <style>
+        .container {
+            margin: 3em auto;
+            line-height: 2em;
+        }
+
+        #ascii,
+        #roman {
+            font-size: 2.2em;
+        }
+
+        input[type=text],
+        input[type=number] {
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            outline: none;
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid #DDDDDD;
+        }
+
+        input[type=text]:focus,
+        input[type=number]:focus {
+            box-shadow: 0 0 7px rgba(81, 203, 238, 1);
+            -webkit-box-shadow: 0px 0px 7px rgba(81, 203, 238, 1);
+            -moz-box-shadow: 0px 0px 7px rgba(81, 203, 238, 1);
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid rgba(81, 203, 238, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="twelve columns">
+                <label for="ascii">Enter Number: <input id="ascii" type="number" value="" min="1"
+                        max="399999" /></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <label for="roman">Roman Numeral: <input id="roman" type="text" title="Highlight to Copy"
+                        size="25"></label>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        $("#ascii").val("1947");
+        $("#roman").val("ⅯⅭⅯⅩⅬⅦ");
+        $("#ascii").on("keyup change mouseout", function () {
+            var num = $(this).val();
+            var lookup = {
+                ↈ: 100000,
+                ↂↈ: 90000,
+                ↇ: 50000,
+                ↂↇ: 40000,
+                ↂ: 10000,
+                Ⅿↂ: 9000,
+                ↁ: 5000,
+                Ⅿↁ: 4000,
+                Ⅿ: 1000,
+                ⅭⅯ: 900,
+                Ⅾ: 500,
+                ⅭⅮ: 400,
+                Ⅽ: 100,
+                ⅩⅭ: 90,
+                Ⅼ: 50,
+                ⅩⅬ: 40,
+                Ⅹ: 10,
+                Ⅸ: 9,
+                Ⅷ: 8,
+                Ⅶ: 7,
+                Ⅵ: 6,
+                Ⅴ: 5,
+                Ⅳ: 4,
+                Ⅲ: 3,
+                Ⅱ: 2,
+                Ⅰ: 1
+            },
+                roman = '',
+                i;
+            if (num.length > 6) {
+                $(this).val(num.substr(0, 6))
+                return false;
+            }
+            if (num <= 399999) {
+                $(this).val($(this).val());
+            } else {
+                $(this).val("399999");
+            }
+            for (i in lookup) {
+                while (num >= lookup[i]) {
+                    roman += i;
+                    num -= lookup[i];
+                }
+            }
+            $("#roman").val(roman);
+        });
+    </script>
+</body>
+
+</html>
