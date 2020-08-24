@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesars Cipher</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700,900");
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            width: 100%;
+            line-height: 1.5;
+        }
+
+        body {
+            width: 100%;
+            font-family: "Roboto", sans-serif;
+        }
+
+        header {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        main {
+            width: 80vw;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1em;
+            justify-items: center;
+        }
+
+        .icon {
+            grid-column: 1/3;
+            justify-self: start;
+            font-size: 1.2rem;
+        }
+
+        .icon:hover {
+            cursor: pointer;
+        }
+
+        .text-box {
+            resize: none;
+            width: 100%;
+            max-width: 100%;
+            height: 250px;
+            padding: 0.5em 0.5em;
+            border: 1px solid #818181;
+        }
+
+        #results {
+            background: #ededed;
+        }
+
+        .btn {
+            border: none;
+            background: #1f1f1f;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0.5rem;
+            width: 150px;
+            transition: ease-in 350ms;
+            outline: none;
+            margin: 0 0.5em;
+        }
+
+        .btn:hover {
+            background: dodgerblue;
+            color: black;
+            cursor: pointer;
+        }
+
+        .about {
+            grid-column: span 2;
+        }
+
+        .about-wrapper {
+            text-align: justify;
+        }
+
+        img {
+            grid-column: span 2;
+            max-width: 100%;
+            margin: 1em 0;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #1f1f1f;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-width: 550px) {
+            main {
+                width: 90vw;
+                grid-template-columns: 1fr;
+            }
+
+            .icon {
+                grid-column: 1/2;
+                justify-self: center;
+            }
+
+            .about {
+                grid-column: span 1;
+            }
+
+            img {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="sideNavbar" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+            <a href="http://develo.net">Home</a>
+            <a href="#">COMING</a>
+            <a href="#">SOON</a>
+        </div>
+        <header>
+            <h1>Caesars Cipher</h1>
+            <h4>FreeCodeCamp Challenge</h4>
+        </header>
+        <main class="wrapper">
+            <div class="icon" id="menu"><i class="fas fa-bars"></i> Menu</div>
+            <textarea id="textbox" class="text-box" maxlength="1000" placeholder="Convert A-Z a-z"></textarea>
+            <textarea id="results" class="text-box result" placeholder="Result" readonly></textarea>
+            <button type="button" class="btn" id="convert">CONVERT</button>
+            <button type="button" class="btn" id="clear">CLEAR</button>
+        </main>
+    </div>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            const DISPLAY = document.getElementById("textbox");
+            const RES_DISPLAY = document.getElementById("results");
+
+            document.getElementById("clear").addEventListener("click", function () {
+                DISPLAY.value = "";
+                RES_DISPLAY.value = "";
+            });
+            document.getElementById("convert").addEventListener("click", function () {
+                DISPLAY.value !== ""
+                    ? crypto(DISPLAY.value)
+                    : console.log("Error no chars");
+            });
+            document.getElementById("menu").addEventListener("click", function () {
+                document.getElementById("sideNavbar").style.width = "250px";
+            });
+
+            document.getElementById("closeBtn").addEventListener("click", function () {
+                document.getElementById("sideNavbar").style.width = "0";
+            });
+
+            function crypto(str) {
+                let newStr = "";
+                for (let i = 0; i < str.length; i++) {
+                    let charVal = str.charCodeAt(i);
+                    if ((charVal > 64 && charVal < 91) || (charVal > 96 && charVal < 123)) {
+                        if (charVal < 78) {
+                            newStr += String.fromCharCode((charVal += 13));
+                        } else if (charVal > 77 && charVal < 91) {
+                            newStr += String.fromCharCode((charVal -= 13));
+                        } else if (charVal > 96 && charVal < 110) {
+                            newStr += String.fromCharCode((charVal += 13));
+                        } else if (charVal > 109) {
+                            newStr += String.fromCharCode((charVal -= 13));
+                        }
+                    } else {
+                        newStr += str[i];
+                    }
+                }
+                RES_DISPLAY.value = newStr;
+            }
+        });
+    </script>
+</body>
+
+</html>
