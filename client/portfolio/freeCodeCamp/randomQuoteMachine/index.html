@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Random Quote Machine</title>
+</head>
+
+<body>
+  <!-- Esto es un simple ejemplo de React/Redux usando solo CDN's -->
+
+  <!-- En este ID pondremos nuestro componente principal de React -->
+  <div id="quote-box" style="margin-top: 25%">React no se esta reproduciendo</div>
+
+  <!-- Importamos Babel para convertir nuestro JSX en JS cual nuestro navegador puede entender  -->
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Esta libreria continue toda la funcionalidad que usaremos para nuestra tienda -->
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux.min.js"></script>
+  <!-- Esta es la libreria principal de react para crear nuestros componentes -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <!-- Esta libreria nos deja reproducir nuestro componente principal a el ID app en el HTML -->
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <!-- Esta libreria nos da aceso a metodos como provider y connect cual actuan como un puente entre react y redux -->
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.1/react-redux.js"></script>
+
+  <!-- Load our React component. -->
+  <script type="text/babel" src="index.js"></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+</body>
+
+</html>
