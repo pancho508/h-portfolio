@@ -1,0 +1,224 @@
+@import url(https://fonts.googleapis.com/css?family=VT323);
+
+html {
+    background:#111;
+    height: 100vh;
+}
+#quote-box {
+    width: relative;
+    height: 90%;
+    margin: 2% 3% 2% 3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font:2em VT323,monospace;
+    font-size: 24px;
+    display: block;
+    background:#000;
+    padding: 10px;
+    box-sizing:border-box;
+    text-shadow: 0 0 1em rgba(white,.25);
+    border-radius:55px;
+    overflow:auto;
+    background: #333 ;
+    background: radial-gradient(ellipse at center,  #333, 0%,darken(#333,15%) 100%);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 30px -5px black inset;
+    border:50px solid #111211;
+    filter: contrast(1.25) sepia(1) contrast(.7) hue-rotate(60deg) saturate(2) contrast(1.4);
+}
+#quote-box::after{
+    content:'';
+    pointer-events:none;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 5px 30px -5px black inset;
+     background-image: repeating-linear-gradient(180deg,rgba(200,255,200,.25) 0px,rgba(200,255,200,.25) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 100%);
+    background-size:3px 3px;
+}
+#quote-box:hover {
+    box-shadow: 10px 5px 5px rgba(145, 145, 145, 0.795);
+}
+::selection {
+    background: #ffffff75;
+    text-shadow: none;
+  }
+.box{
+    height: relative;
+    margin: 5% 3% 3% ;
+    border: 1px solid #f5ffc8;
+}  
+#text {
+    width: 80%;
+    height: relative;
+    margin-left: 10%;
+    border: 1px solid #f5ffc8;
+}
+#asciiStyle {
+    display: inline-block;
+    letter-spacing: -0.2em;
+    line-height: 1em;
+    text-align: "left";
+    font-size: 13px
+  }
+  #tweet-quote{
+    margin: 3%;
+    color: white;
+  }
+#new-quote{
+    color: black;
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 5%;
+}  
+input{
+    font-family: inherit;
+    width: 90%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    padding: 7px 0;
+    background: transparent;
+    color: white;
+}
+#submitQuote{
+    margin: 3% 0 3% 0;
+    font-size: 18px;
+}
+/* glitch */
+.glitch {
+    position: relative;
+}
+.glitch:before, .glitch:after {
+    display: block;
+    content: attr(value);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+}
+.glitch:after {
+    color: #f0f;
+    z-index: -2;
+}
+.glitch:before {
+    color: #0ff;
+    z-index: -1;
+}
+.glitch:hover:before {
+    animation: glitch-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+.glitch:hover:after {
+    animation: glitch-left-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+.small .glitch {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+.small .glitch:before, .small .glitch:after {
+    content: 'Start';
+}
+.small .glitch:after {
+    color: #f40080;
+}
+.small .glitch:before {
+    color: #7fa500;
+}
+.small .glitch:hover:before {
+    animation: glitch-small 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+.small .glitch:hover:after {
+    animation: glitch-small 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+.medium .glitch {
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #4222f1;
+}
+.medium .glitch:before, .medium .glitch:after {
+    content: 'CSS Glitch';
+}
+.medium .glitch:after {
+    color: #c487c2;
+}
+.medium .glitch:before {
+    color: #00ff02;
+}
+.medium .glitch:hover:before {
+    animation: glitch-medium 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+.medium .glitch:hover:after {
+    animation: glitch-medium 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+@keyframes glitch-small {
+    0% {
+        transform: translate(0);
+   }
+    33% {
+        transform: translate(2px, 1px);
+   }
+    66% {
+        transform: translate(-1px, -1px);
+   }
+    to {
+        transform: translate(0);
+   }
+}
+@keyframes glitch-medium {
+    0% {
+        transform: translate(0);
+   }
+    20% {
+        transform: translate(-2px, 2px);
+   }
+    40% {
+        transform: translate(-2px, -2px);
+   }
+    60% {
+        transform: translate(2px, 2px);
+   }
+    80% {
+        transform: translate(2px, -2px);
+   }
+    to {
+        transform: translate(0);
+   }
+}
+@keyframes glitch-left {
+    0% {
+        transform: translate(0);
+   }
+    33% {
+        transform: translate(-5px, 3px);
+   }
+    66% {
+        transform: translate(5px, -3px);
+   }
+    to {
+        transform: translate(0);
+   }
+}
+@keyframes glitch-left-2 {
+    0% {
+        transform: translate(0);
+   }
+    33% {
+        transform: translate(-5px, -3px);
+   }
+    66% {
+        transform: translate(5px, 2px);
+   }
+    to {
+        transform: translate(0);
+   }
+}
