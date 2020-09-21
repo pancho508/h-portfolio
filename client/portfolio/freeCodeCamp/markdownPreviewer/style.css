@@ -94,7 +94,7 @@ html, body {
     width: 96%;
     height: 92%;
     margin: 2% 2% 2% 2%;
-    overflow-y: hidden;
+    overflow: auto;
     white-space: pre-wrap;
     font-family: 'VT323', monospace;
     font-size: 1.3em;
