@@ -12,6 +12,7 @@ class App extends React.Component {
         this.handleClick = this.handleClick.bind(this)
         this.tik = this.tik.bind(this)
         this.pause = this.pause.bind(this)
+        this.resetTime = this.resetTime.bind(this)
     }
     handleClick(e) {
         switch (e.target.id) {
@@ -21,9 +22,11 @@ class App extends React.Component {
                 }))
                 break;
             case "break-decrement":
-                this.setState(state => ({
-                    break: state.break - 1
-                }))
+                if (this.state.break > 1) {
+                    this.setState(state => ({
+                        break: state.break - 1
+                    }))
+                }
                 break;
             case "session-increment":
                 this.setState(state => ({
@@ -31,9 +34,11 @@ class App extends React.Component {
                 }))
                 break;
             case "session-decrement":
-                this.setState(state => ({
-                    session: state.session - 1
-                }))
+                if (this.state.session > 1) {
+                    this.setState(state => ({
+                        session: state.session - 1
+                    }))
+                }
                 break;
         }
         const minsToSecs = this.state.session * 60
@@ -67,6 +72,16 @@ class App extends React.Component {
             running: !state.running
         }))
     }
+    resetTime() {
+        clearInterval(this.timer);
+        this.setState({
+            session: 25,
+            break: 5,
+            timeLeft: 1500,
+            running: false
+
+        })
+    }
     componentDidMount() {
         console.log("mount", this.state.running)
         this.pause()
@@ -98,7 +113,7 @@ class App extends React.Component {
                     Session TIME
                     <h2 id="time-left" >{this.state.mins}:{this.state.secs}</h2>
                     <button id="start_stop" onClick={this.pause}>play/pause</button>
-                    <button id="reset" >Reset</button>
+                    <button id="reset" onClick={this.resetTime} >Reset</button>
                 </div>
             </div>
         )
