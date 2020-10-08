@@ -28,3 +28,14 @@ let drawPoint = () => {
 let generateAxes = () => {
 
 }
+
+req.open("GET", url, true)
+req.onload = () => {
+    values = JSON.parse(req.responseText)
+    console.log(values)
+    drawCanvas()
+    generateScales()
+    drawPoint()
+    generateAxes()
+}
+req.send()
