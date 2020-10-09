@@ -18,15 +18,39 @@ let drawCanvas = () => {
 }
 
 let generateScales = () => {
+    xScale = d3.scaleLinear()
+        .domain([d3.min(values, (el) => el['Year']), d3.max(values, (el) => el['Year'])])
+        .range([padding, width - padding])
+
+    yScale = d3.scaleTime()
+        .range([padding, height - padding])
 
 }
 
-let drawPoint = () => {
+let drawPoints = () => {
+    svg.selectAll('circle')
+        .data(values)
+        .enter()
+        .append('circle')
+        .attr('class', 'dot')
+        .attr('r', '5')
+        .attr('data-xvalue', (el) => el['Year'])
+        .attr('data-yvalue', (el) => new Date(el['Seconds']))
 
 }
 
 let generateAxes = () => {
-
+    let xAxis = d3.axisBottom(xScale)
+        .tickFormat(d3.format('d'))
+    let yAxis = d3.axisLeft(yScale)
+    svg.append('g')
+        .call(xAxis)
+        .attr('id', "x-axis")
+        .attr('transform', 'translate(0,' + (height - padding) + ')')
+    svg.append('g')
+        .call(yAxis)
+        .attr('id', 'y-axis')
+        .attr('transform', 'translate(' + padding + ", 0) ")
 }
 
 req.open("GET", url, true)
@@ -35,7 +59,7 @@ req.onload = () => {
     console.log(values)
     drawCanvas()
     generateScales()
-    drawPoint()
+    drawPoints()
     generateAxes()
 }
 req.send()
