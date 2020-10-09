@@ -1,14 +1,17 @@
 body{
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
+    padding-top: 5%;
 }
 
 svg{
-    background-color: teal;
+    background-color: grey;
 }
 
-text{
-    /* align-self: center; */
+#tooltip{
+    visibility: hidden;
+    width: auto;
+    height: auto;
 }

@@ -11,7 +11,7 @@ let height = 600
 let padding = 40
 
 let svg = d3.select('svg')
-
+let tooltip = d3.select('#tooltip')
 let drawCanvas = () => {
     svg.attr('width', width)
     svg.attr('height', height)
@@ -19,10 +19,11 @@ let drawCanvas = () => {
 
 let generateScales = () => {
     xScale = d3.scaleLinear()
-        .domain([d3.min(values, (el) => el['Year']), d3.max(values, (el) => el['Year'])])
+        .domain([d3.min(values, (el) => el['Year']) - 2, d3.max(values, (el) => el['Year']) + 2])
         .range([padding, width - padding])
 
     yScale = d3.scaleTime()
+        .domain([d3.min(values, (el) => new Date(el['Seconds'] * 1000)), d3.max(values, (el) => new Date(el['Seconds'] * 1000))])
         .range([padding, height - padding])
 
 }
@@ -33,16 +34,33 @@ let drawPoints = () => {
         .enter()
         .append('circle')
         .attr('class', 'dot')
-        .attr('r', '5')
+        .attr('r', '6')
         .attr('data-xvalue', (el) => el['Year'])
-        .attr('data-yvalue', (el) => new Date(el['Seconds']))
-
+        .attr('data-yvalue', (el) => new Date(el['Seconds'] * 1000))
+        .attr('cx', (el) => xScale(el["Year"]))
+        .attr('cy', (el) => yScale(new Date(el['Seconds'] * 1000)))
+        .attr('fill', (el) => el["Doping"] != "" ? 'red' : 'white')
+        .on('mouseover', (el) => {
+            tooltip.transition()
+                .style('visibility', 'visible')
+            if (el['Doping'] != "") {
+                tooltip.text("DETAILS => " + el['Year'] + ' | ' + el['Name'] + ' | ' + el['Time'] + ' | ' + el['Doping'])
+            } else {
+                tooltip.text("DETAILS => " + el['Year'] + ' | ' + el['Name'] + ' | ' + el['Time'] + ' | ' + "No Drugs")
+            }
+            tooltip.attr('data-year', el['Year'])
+        })
+        .on('mouseout', (el) => {
+            tooltip.transition()
+                .style('visibility', 'hidden')
+        })
 }
 
 let generateAxes = () => {
     let xAxis = d3.axisBottom(xScale)
         .tickFormat(d3.format('d'))
     let yAxis = d3.axisLeft(yScale)
+        .tickFormat(d3.timeFormat('%M:%S'))
     svg.append('g')
         .call(xAxis)
         .attr('id', "x-axis")
