@@ -13,7 +13,7 @@ let padding = 60
 let canvas = d3.select('#canvas')
 canvas.attr('width', width)
 canvas.attr('height', height)
-
+let tooltip = d3.select('#tooltip')
 let generateScales = () => {
     minYear = d3.min(values, (el) => el['year'])
     maxYear = d3.max(values, (el) => el['year'])
@@ -52,12 +52,37 @@ let drawCells = () => {
             return (width - 2 * padding) / (maxYear - minYear)
         })
         .attr('x', (el) => xScale(el['year']))
+        .on('mouseover', (el) => {
+            tooltip.transition()
+                .style('visibility', 'visible')
+            let monthNames = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December'
+            ]
+            tooltip.text(el['year'] + ' ' + monthNames[el["month"] - 1] + ' - ' + (baseTemp + el['variance']) + ' (' + item['variance'] + ")")
+            tooltip.attr('data-year', 'hidden')
+        })
+        .on('mouseout', (el) => {
+            tooltip.transition()
+                .style('visibility', 'hidden')
+        })
 }
 
 let drawAxes = () => {
     let xAxis = d3.axisBottom(xScale)
         .tickFormat(d3.format('d'))
     let yAxis = d3.axisLeft(yScale)
+        .tickFormat(d3.timeFormat('%B'))
     canvas.append('g')
         .call(xAxis)
         .attr('id', 'x-axis')
