@@ -11,30 +11,29 @@
 </head>
 
 <body>
-    <h1 id="title"> Monthly Global Land-Surface Temperatures</h1>
+    <h1 id="title"> Monthly Global Temperatures</h1>
     <h3 id='description'> Temperatures from 1753 till now</h3>
     <div id="tooltip">
 
     </div>
     <svg id="canvas">
-
     </svg>
     <svg id="legend">
         <g>
-            <rect x="10" y="10" width="40" height="40" fill="SteelBlue"></rect>
+            <rect x="10" y="-10" width="40" height="40" fill="SteelBlue"></rect>
             <text x="60" y="20" fill="white"> Variance of -1 or less</text>
         </g>
         <g>
-            <rect x="10" y="10" width="40" height="40" fill="LightSteelBlue"></rect>
-            <text x="60" y="20" fill="white"> On or below average</text>
+            <rect x="10" y="30" width="40" height="40" fill="LightSteelBlue"></rect>
+            <text x="60" y="60" fill="white"> On or below average</text>
         </g>
         <g>
-            <rect x="10" y="10" width="40" height="40" fill="Orage"></rect>
-            <text x="60" y="20" fill="white"> Above average</text>
+            <rect x="10" y="80" width="40" height="40" fill="Orage"></rect>
+            <text x="60" y="100" fill="white"> Above average</text>
         </g>
         <g>
-            <rect x="10" y="10" width="40" height="40" fill="Red"></rect>
-            <text x="60" y="20" fill="white"> Variance of +1 or more</text>
+            <rect x="10" y="120" width="40" height="40" fill="Red"></rect>
+            <text x="60" y="140" fill="white"> Variance of +1 or more</text>
         </g>
     </svg>
     <script src="./script.js"></script>

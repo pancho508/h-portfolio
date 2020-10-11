@@ -9,7 +9,6 @@ let maxYear
 let width = 1200
 let height = 600
 let padding = 60
-
 let canvas = d3.select('#canvas')
 canvas.attr('width', width)
 canvas.attr('height', height)
@@ -23,9 +22,7 @@ let generateScales = () => {
     yScale = d3.scaleTime()
         .domain([new Date(0, 0, 0, 0, 0, 0, 0), new Date(0, 12, 0, 0, 0, 0, 0)])
         .range([padding, height - padding])
-
 }
-
 let drawCells = () => {
     canvas.selectAll('rect')
         .data(values)
@@ -34,13 +31,13 @@ let drawCells = () => {
         .attr('class', 'cell')
         .attr('fill', (el) => {
             if (el['variance'] < -1) {
-                return 'SteelBlue'
+                return '#1b03a3'
             } else if (el['variance'] < 0) {
-                return 'LightSteelBlue'
+                return '#4cf7db'
             } else if (el['variance'] < 1) {
-                return 'Orange'
+                return '#FF9933'
             } else {
-                return 'Red'
+                return '#b92e34'
             }
         })
         .attr('data-year', (el) => el['year'])
@@ -69,15 +66,14 @@ let drawCells = () => {
                 'November',
                 'December'
             ]
-            tooltip.text(el['year'] + ' ' + monthNames[el["month"] - 1] + ' - ' + (baseTemp + el['variance']) + ' (' + item['variance'] + ")")
-            tooltip.attr('data-year', 'hidden')
+            tooltip.text(el['year'] + ' ' + monthNames[el["month"] - 1] + ' - ' + (baseTemp + el['variance']) + ' (' + el['variance'] + ")")
+            tooltip.attr('data-year', el['year'])
         })
         .on('mouseout', (el) => {
             tooltip.transition()
                 .style('visibility', 'hidden')
         })
 }
-
 let drawAxes = () => {
     let xAxis = d3.axisBottom(xScale)
         .tickFormat(d3.format('d'))
@@ -92,7 +88,6 @@ let drawAxes = () => {
         .attr('id', 'y-axis')
         .attr('transform', 'translate(' + padding + ", 0)")
 }
-
 req.open('GET', url, true)
 req.onload = () => {
     let obj = JSON.parse(req.responseText)
@@ -103,7 +98,5 @@ req.onload = () => {
     generateScales()
     drawCells()
     drawAxes()
-
-
 }
 req.send()
