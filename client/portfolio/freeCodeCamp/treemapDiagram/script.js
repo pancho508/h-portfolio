@@ -1,19 +1,11 @@
 let url = 'https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json'
 
 let data
-// let values
-// let heightScale
-// let xScale
-// let xAxisScale
-// let yAxisScale
-
-// let width = 800
-// let height = 600
-// let padding = 40
+let consoles = []
 
 let canvas = d3.select('#canvas')
 
-function hashCode(str) { // java String#hashCode
+function hashCode(str) {
     var hash = 0;
     for (var i = 0; i < str.length; i++) {
         hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -46,7 +38,11 @@ let drawTreeMap = () => {
         .attr('class', 'tile')
         .attr('fill', (el) => {
             let category = el['data']['category']
-            console.log(category)
+            console.log("consoles", category, consoles)
+            if (!consoles.includes(category)) {
+                consoles.push(category)
+            }
+
             return "#" + intToRGB(hashCode(category))
 
         })
@@ -59,19 +55,9 @@ let drawTreeMap = () => {
         .text((el) => el['data']['name'])
         .attr('x', 10)
         .attr('y', 20)
+
+    legendInsert(consoles)
 }
-
-// let generateScales = () => {
-
-// }
-
-// let drawBars = () => {
-
-// }
-
-// let generateAxes = () => {
-
-// }
 
 d3.json(url).then(
     (d, err) => {
@@ -84,3 +70,12 @@ d3.json(url).then(
         }
     }
 )
+
+
+function legendInsert(arr) {
+    document.getElementById('legend').innerHTML = arr.map(el =>
+        `<div>
+      <div style="background-color:${"#" + intToRGB(hashCode(el))};>Console Name: ${el}</div> 
+    </div>`
+    ).join('')
+}
